@@ -7,6 +7,11 @@ services:
     networks:
       - back_net
       - front_net
+    links:
+      - ui
+      - post
+      - comment
+
   ui:
     build: ./ui
     image: ${USERNAME}/ui:1.0
