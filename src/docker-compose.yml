@@ -13,16 +13,22 @@ services:
       - 9292:9292/tcp
     networks:
       - front_net
+    links:
+      - post_db
   post:
     build: ./post-py
     image: ${USERNAME}/post:1.0
     networks:
       - back_net
+    links:
+      - post_db
   comment:
     build: ./comment
     image: ${USERNAME}/comment:1.0
     networks:
       - back_net
+    links:
+      - post_db
 
 volumes:
   post_db:
