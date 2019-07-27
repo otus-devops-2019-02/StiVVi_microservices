@@ -6,12 +6,10 @@ services:
       - post_db:/data/db
     networks:
       - back_net
-      - front_net
     links:
       - ui
       - post
       - comment
-
   ui:
     build: ./ui
     image: ${USERNAME}/ui:1.0
@@ -19,22 +17,17 @@ services:
       - 9292:9292/tcp
     networks:
       - front_net
-    links:
-      - post_db
+      - back_net
   post:
     build: ./post-py
     image: ${USERNAME}/post:1.0
     networks:
       - back_net
-    links:
-      - post_db
   comment:
     build: ./comment
     image: ${USERNAME}/comment:1.0
     networks:
       - back_net
-    links:
-      - post_db
 
 volumes:
   post_db:
