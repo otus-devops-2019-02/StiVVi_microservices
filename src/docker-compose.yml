@@ -1,7 +1,7 @@
 version: '3.3'
 services:
   post_db:
-    image: mongo:3.2
+    image: mongo:${mongo_version}
     volumes:
       - post_db:/data/db
     networks:
@@ -12,7 +12,7 @@ services:
       - comment
   ui:
     build: ./ui
-    image: ${USERNAME}/ui:1.0
+    image: ${USERNAME}/ui:${ui_version}
     ports:
       - 9292:9292/tcp
     networks:
@@ -20,12 +20,12 @@ services:
       - back_net
   post:
     build: ./post-py
-    image: ${USERNAME}/post:1.0
+    image: ${USERNAME}/post:${post_version}
     networks:
       - back_net
   comment:
     build: ./comment
-    image: ${USERNAME}/comment:1.0
+    image: ${USERNAME}/comment:${comment_version}
     networks:
       - back_net
 
@@ -38,10 +38,11 @@ networks:
     ipam:
       driver: default
       config:
-        - subnet: 10.0.1.0/24
+        - subnet: ${network_front}
   back_net:
     driver: bridge
     ipam:
       driver: default 
       config:
-        - subnet: 10.0.2.0/24
+        - subnet: ${network_back}
+        # 10.0.2.0/24
