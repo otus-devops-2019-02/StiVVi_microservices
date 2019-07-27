@@ -29,10 +29,14 @@ volumes:
 
 networks:
   front_net:
-    driver: default
-    config:
-      - subnet: 10.0.1.0/24
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.0.1.0/24
   back_net:
-    driver: default
-    config:
-      - subnet: 10.0.2.0/24
+    driver: bridge
+    ipam:
+      driver: default 
+      config:
+        - subnet: 10.0.2.0/24
