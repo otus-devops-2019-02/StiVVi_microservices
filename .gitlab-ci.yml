@@ -15,7 +15,7 @@ before_script:
 build_job:
   stage: build
   script:
-    - echo "Building"
+    - docker run -it /reddit/.
   
 test_unit_job:
   stage: test
