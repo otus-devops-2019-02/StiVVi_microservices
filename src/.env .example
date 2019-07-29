@@ -1,7 +1,0 @@
-reddit_port=9292
-mongo_version=latest
-ui_version=1.0
-post_version=1.0
-comment_version=1.0
-network_front=10.0.1.0/24
-network_back=10.0.2.0/24
