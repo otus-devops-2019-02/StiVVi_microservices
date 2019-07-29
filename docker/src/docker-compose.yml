@@ -32,7 +32,7 @@ services:
   prometheus:
     image: ${USERNAME}/prometheus
     ports:
-      - '9090:9090'
+      - 9090:9090/tcp
     volumes:
       - prometheus_data:/prometheus
     command:
