@@ -14,10 +14,10 @@ services:
     networks:
       - back_net:
           aliases:
-            - prometheus
+            - 'prometheus'
       - front_net:
           aliases:
-            - prometheus
+            - 'prometheus'
 
   node_exporter:
     image: prom/node-exporter:v0.15.2
@@ -35,10 +35,10 @@ services:
     networks:
       - back_net:
           aliases:
-            - node_exporter
+            - 'node_exporter'
       - front_net:
           aliases:
-            - node_exporter
+            - 'node_exporter'
 
   cadvisor:
     image: google/cadvisor:v0.29.0
@@ -52,11 +52,11 @@ services:
     networks:
       - back_net:
           aliases:
-            - cadvisor
+            - 'cadvisor'
       - front_net:
           aliases:
-            - cadvisor
-            
+            - 'cadvisor'
+
 volumes:
   prometheus_data:
     

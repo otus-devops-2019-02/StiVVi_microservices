@@ -7,7 +7,7 @@ services:
     networks:
       - back_net:
           aliases:
-            - post_db
+            - 'post_db'
     links:
       - ui
       - post
@@ -20,24 +20,24 @@ services:
     networks:
       - front_net:
           aliases:
-            - ui
+            - 'ui'
       - back_net:
           aliases:
-            - ui
+            - 'ui'
   post:
     #build: ./post-py
     image: ${USERNAME}/post:${post_version}
     networks:
       - back_net:
           aliases:
-            - post
+            - 'post'
   comment:
     #build: ./comment
     image: ${USERNAME}/comment:${comment_version}
     networks:
       - back_net:
           aliases:
-            - comment
+            - 'comment'
   
 volumes:
   post_db:
