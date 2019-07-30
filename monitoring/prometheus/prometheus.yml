@@ -21,6 +21,6 @@ scrape_configs:
           - 'node_exporter:9100'
   
   - job_name: 'cadvisor'
-    statoc_configs:
+    static_configs:
       - targets:
           - 'cadvisor:8080'
