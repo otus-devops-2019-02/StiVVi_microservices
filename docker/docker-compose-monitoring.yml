@@ -1,6 +1,5 @@
 version: '3.3'
 services:
- 
   prometheus:
     image: ${USERNAME}/prometheus
     ports:
@@ -56,10 +55,30 @@ services:
       front_net:
         aliases:
           - cadvisor
+  
+  grafana:
+    image: grafana/grafana:5.0.0
+    volumes:
+      - grafana_data:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=secret
+    depends_on:
+      - prometheus
+    ports:
+      - 3000:3000
+    networks:
+      back_net:
+        aliases:
+          - grafana
+      front_net:
+        aliases:
+          - grafana
 
 volumes:
   prometheus_data:
-    
+  grafana_data:
+
 networks:
   front_net:
     driver: bridge
