@@ -74,6 +74,20 @@ services:
       front_net:
         aliases:
           - grafana
+  
+  alertmanager:
+    image: ${USER_NAME}/alertmanager
+    command:
+      - '--config.file=/etc/alertmanager/config.yml'
+    ports:
+      - 9093:9093
+    networks:
+      back_net:
+        aliases:
+          - alertmanager
+      front_net:
+        aliases:
+          - alertmanager
 
 volumes:
   prometheus_data:
