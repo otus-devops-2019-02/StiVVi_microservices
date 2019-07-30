@@ -12,12 +12,12 @@ services:
       - '--storage.tsdb.path=/prometheus'
       - '--storage.tsdb.retention=1d'
     networks:
-      - back_net:
-          aliases:
-            - 'prometheus'
-      - front_net:
-          aliases:
-            - 'prometheus'
+      back_net:
+        aliases:
+          - prometheus
+      front_net:
+        aliases:
+          - prometheus
 
   node_exporter:
     image: prom/node-exporter:v0.15.2
@@ -33,12 +33,12 @@ services:
       - '--path.sysfs=/host/sys'
       - '--collector.filesystem.ignored-mount-points="^/(sys|proc|dev|host|etc)($$|/)"'
     networks:
-      - back_net:
-          aliases:
-            - 'node_exporter'
-      - front_net:
-          aliases:
-            - 'node_exporter'
+      back_net:
+        aliases:
+          - node_exporter
+      front_net:
+        aliases:
+          - node_exporter
 
   cadvisor:
     image: google/cadvisor:v0.29.0
@@ -50,12 +50,12 @@ services:
     ports:
       - '8080:8080'
     networks:
-      - back_net:
-          aliases:
-            - 'cadvisor'
-      - front_net:
-          aliases:
-            - 'cadvisor'
+      back_net:
+        aliases:
+          - cadvisor
+      front_net:
+        aliases:
+          - cadvisor
 
 volumes:
   prometheus_data:

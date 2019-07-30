@@ -5,9 +5,9 @@ services:
     volumes:
       - post_db:/data/db
     networks:
-      - back_net:
-          aliases:
-            - 'post_db'
+      back_net:
+        aliases:
+          - post_db
     links:
       - ui
       - post
@@ -18,26 +18,26 @@ services:
     ports:
       - 9292:9292/tcp
     networks:
-      - front_net:
-          aliases:
-            - 'ui'
-      - back_net:
-          aliases:
-            - 'ui'
+      front_net:
+        aliases:
+          - ui
+      back_net:
+        aliases:
+          - ui
   post:
     #build: ./post-py
     image: ${USERNAME}/post:${post_version}
     networks:
-      - back_net:
-          aliases:
-            - 'post'
+      back_net:
+        aliases:
+          - post
   comment:
     #build: ./comment
     image: ${USERNAME}/comment:${comment_version}
     networks:
-      - back_net:
-          aliases:
-            - 'comment'
+      back_net:
+        aliases:
+          - comment
   
 volumes:
   post_db:
